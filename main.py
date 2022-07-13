@@ -1,19 +1,9 @@
 from itertools import chain
 
 nested_list = [
-    ['a', 'b', 'c'],
-    ['d', 'e', 'f', 'h', False],
-    [1, 2, None, ['cndks', [2525]]],
-    [
-        ['a', 'b', 'c'],
-        ['d', 'e', 'f', 'h', False],
-        [1, 2, None, ['cndks', [2525]]],
-        [
-            ['a', 'b', 'c'],
-            ['d', 'e', 'f', 'h', False],
-            [1, 2, None, ['cndks', [5555]]],
-        ]
-    ]
+	['a', 'b', 'c'],
+	['d', 'e', 'f', 'h', False],
+	[1, 2, None],
 ]
 
 
@@ -43,3 +33,8 @@ for i in my_object_class:
     if not isinstance(i, list):
         print(count, i)
         count = count + 1
+
+
+my_list = [item for item in my_object_class if not isinstance(item, list)]
+
+print(my_list)
