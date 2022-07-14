@@ -1,16 +1,20 @@
 from itertools import chain
 
 nested_list = [
-	['a', 'b', 'c'],
-	['d', 'e', 'f', 'h', False],
-	[1, 2, None],
+    ['a', 'b', 'c'],
+    ['d', 'e', 'f', 'h', False],
+    [1, 2, None,
+     [
+        ['a', 'b', 'c'],
+        ['d', 'e', 'f', 'h', False],
+        [1, 2, None]
+     ]
+     ],
 ]
 
 
-class My_iterator(list):
-
+class My_iterator:
     def __init__(self, my_list):
-        super().__init__()
         self.my_list = my_list
 
     def __iter__(self):
@@ -24,8 +28,6 @@ class My_iterator(list):
         return next_values
 
 
-
-
 my_object_class = My_iterator(nested_list)
 
 count = 1
@@ -33,7 +35,6 @@ for i in my_object_class:
     if not isinstance(i, list):
         print(count, i)
         count = count + 1
-
 
 my_list = [item for item in my_object_class if not isinstance(item, list)]
 
