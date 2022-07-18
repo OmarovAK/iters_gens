@@ -5,12 +5,14 @@ nested_list = [
     ['d', 'e', 'f', 'h', False],
     [1, 2, None,
      [
-        ['a', 'b', 'c'],
-        ['d', 'e', 'f', 'h', False],
-        [1, 2, None]
+         ['a', 'b', 'c'],
+         ['d', 'e', 'f', 'h', False],
+         [1, 2, None]
      ]
      ],
 ]
+
+print('Итератор')
 
 
 class My_iterator:
@@ -36,6 +38,22 @@ for i in my_object_class:
         print(count, i)
         count = count + 1
 
-my_list = [item for item in my_object_class if not isinstance(item, list)]
+print([item for item in my_object_class if not isinstance(item, list)])
 
-print(my_list)
+print(30 * '=')
+
+print('Генератор')
+
+
+def gen_list(nested_list):
+    for item in nested_list:
+        if isinstance(item, list):
+            yield from gen_list(item)
+        else:
+            yield item
+
+
+for i in gen_list(nested_list):
+    print(i)
+
+print([item for item in gen_list(nested_list)])
